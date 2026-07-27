@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veliora | Luxury Fashion &amp; Style</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=300;400;500;600&amp;family=Playfair+Display:ital,wght=0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Global Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fdfdfd; 
+            color: #2c2c2c;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Premium Navigation Header (No Sticky) */
+        .brand-header {
+            background: #ffffff;
+            padding: 30px 4% 20px 4%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #f0ebe6;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .logo-container {
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Fixed Link Click Issue */
+        .nav-btn {
+            display: inline-block;
+            color: #666 !important;
+            font-weight: 500;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 8px 0;
+            text-decoration: none !important;
+            position: relative;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1.5px;
+            background-color: #b08d74;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-btn:hover {
+            color: #b08d74 !important;
+        }
+
+        .nav-btn:hover::after {
+            width: 100%;
+        }
+
+        /* Base Section Wrapper */
+        .collections-section,
+        .products-section {
+            padding: 60px 4% 55px 4%;
+        }
+
+        .collections-section {
+            background-color: #fdfdfd;
+        }
+
+        .products-section {
+            background-color: #f9f7f5;
+        }
+
+        /* Enhanced Cards Framework */
+        .collection-card, .product-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid #eae5e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 8px;
+            background: #ffffff; 
+            position: relative;
+        }
+
+        .img-overflow-hidden {
+            overflow: hidden;
+            position: relative;
+            background-color: #f5f5f5;
+        }
+
+        .collection-card img, .product-card img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .collection-card:hover img, .product-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .collection-card:hover, .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(43,33,26,0.06);
+            border-color: #c5a994;
+        }
+
+        /* Modern Typography Headers */
+        .section-title-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            margin: 8px 0 0 0;
+        }
+
+        .section-subtitle-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #b08d74;
+            display: block;
+            font-weight: 600;
+        }
+
+        .title-line {
+            width: 40px;
+            height: 1.5px;
+            background-color: #b08d74;
+            margin: 20px auto 0 auto;
+        }
+
+        /* Interactive Premium Buttons */
+        .primary-cta-btn {
+            background-color: #2b211a;
+            color: #ffffff !important;
+            padding: 16px 45px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 1px solid #2b211a;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .primary-cta-btn:hover {
+            background-color: transparent;
+            color: #2b211a !important;
+            box-shadow: 0 10px 20px rgba(43,33,26,0.08);
+            transform: translateY(-1px);
+        }
+
+        /* Collection Black Button Styling */
+        .collection-black-btn {
+            display: inline-block;
+            background-color: #2b211a;
+            color: #ffffff !important;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            font-weight: 500;
+            border-radius: 4px;
+            border: 1px solid #2b211a;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .collection-black-btn:hover {
+            background-color: #ffffff;
+            color: #2b211a !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Sale Banner Styling (Height: 260px) */
+        .sale-banner {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(43, 33, 26, 0.45), rgba(43, 33, 26, 0.45)), url('https://i.pinimg.com/736x/79/9d/60/799d600d60b931b198d64c3f721e5c89.jpg');
+            background-size: cover;
+            background-position: center 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .sale-subtitle {
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .sale-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin: 0 0 20px 0;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+        }
+
+        /* Shop Now Button */
+        .shop-now-btn {
+            display: inline-block;
+            background-color: #2b211a; 
+            color: #ffffff !important;            
+            padding: 12px 35px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #2b211a; 
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .shop-now-btn:hover {
+            background-color: #ffffff; 
+            color: #2b211a !important;            
+            transform: translateY(-2px);
+        }
+
+        /* Editorial Split Section */
+        .editorial-split-section {
+            display: flex;
+            align-items: center;
+            min-height: 600px;
+            padding: 100px 8%;
+            background-color: #f9f7f5;
+        }
+        
+        .text-container {
+            padding-right: 6%;
+        }
+        
+        .editorial-split-section h3 {
+            font-size: 11px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            color: #b08d74;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .editorial-split-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 400;
+            line-height: 1.3;
+            margin: 5px 0 25px 0;
+            color: #1a1a1a;
+        }
+        
+        .editorial-split-section p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #555555;
+            margin-bottom: 40px;
+            max-width: 480px;
+            font-weight: 300;
+        }
+        
+        .learn-more-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: #111111;
+            color: #ffffff !important;
+            border: 1px solid #111111;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        
+        .learn-more-btn:hover {
+            background-color: transparent;
+            color: #111111 !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .image-container img {
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 25px 50px rgba(43,33,26,0.08);
+        }
+
+        /* Card Utility Tags */
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ffffff;
+            color: #2b211a;
+            padding: 6px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            z-index: 5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Lookbook Flex Grid Cards */
+        .lookbook-card {
+            flex: 1; 
+            min-width: 320px; 
+            max-width: 380px; 
+            border: 1px solid #b08d74; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: stretch;
+            background: #ffffff;
+            transition: all 0.4s ease;
+        }
+
+        .lookbook-card:hover {
+            transform: translateY(-6px);
+            border-color: #2b211a; 
+            box-shadow: 0 20px 35px rgba(43,33,26,0.06);
+        }
+
+        .look-shop-link {
+            font-weight: 600; 
+            letter-spacing: 1.5px; 
+            margin-top: 22px; 
+            font-size: 11px; 
+            text-transform: uppercase;
+            display: inline-block;
+            color: #b08d74;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            text-decoration: none;
+        }
+
+        .look-shop-link:hover {
+            color: #2b211a;
+            border-color: #2b211a;
+        }
+
+        /* Discover More Background Image Wrapper Section */
+        .discover-parallax-section {
+            position: relative;
+            width: 100%;
+            padding: 90px 4%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url('https://i.pinimg.com/736x/2f/e7/b6/2fe7b6df5ee99b3dbb449d12ebee71dd.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            text-align: center;
+        }
+
+        /* Footer Style Sheet Definitions */
+        .footer {
+            background-color: #f7f4f0; 
+            padding: 60px 40px;
+            border-top: 1px solid #e8e2da;
+            color: #4a4a4a;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr; 
+            gap: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #2b2b2b;
+            text-transform: uppercase;
+        }
+
+        .brand-col .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .brand-col .footer-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #707070;
+            margin-bottom: 20px;
+            max-width: 240px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 13px;
+            color: #555555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #000000;
+        }
+
+        .newsletter-col p {
+            font-size: 13px;
+            color: #707070;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcd6cd;
+            background-color: #ffffff;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #cbbba0; 
+            color: #ffffff;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #b0a086; 
+        }
+        
+        /* Responsive Framework Adjustments */
+        @media (max-width: 992px) {
+            .editorial-split-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 4%;
+            }
+            .text-container {
+                padding-right: 0;
+                margin-bottom: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .editorial-split-section p {
+                margin: 20px auto 35px auto;
+            }
+            .sale-title {
+                font-size: 28px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            .brand-col, .newsletter-col {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .brand-col, .newsletter-col {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body id="home-top">
+     
+    <!-- Pure Navigation Bar (Corrected Anchors matched with Section IDs) -->
+    <header class="brand-header">
+        <div class="logo-container" onclick="window.location.href='#home-top';">
+            <h2 style="font-family:'Playfair Display', serif; margin:0; color:#1a1a1a; letter-spacing:8px; font-weight: normal; font-size: 36px;">
+                VELIORA
+            </h2>
+            <p style="font-family:'Montserrat', sans-serif; font-size:9px; letter-spacing:6px; color:#8a947e; text-transform:uppercase; margin:10px 0 0 0; font-weight: 600;">
+                Where Style Meets Elegance
+            </p>
+        </div>
+         
+        <nav class="w3-hide-small nav-container">
+            <a href="#home-top" class="nav-btn">Home</a>
+            <a href="#collections" class="nav-btn">Collections</a>
+            <a href="#new-arrivals" class="nav-btn">New arrivals</a>
+            <a href="#shop-lookbook" class="nav-btn">Lookbook</a>
+            <a href="#our-story" class="nav-btn">Our Story</a>
+            <a href="#contact-footer" class="nav-btn">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Hero Showcase Section -->
+    <div style="position: relative; width: 100%; max-width: 1400px; height: 600px; margin: 0 auto; overflow: hidden;"> 
+        <img src="https://t4.ftcdn.net/jpg/08/09/94/39/360_F_809943929_MzmAN1jaqgb77CAjv81eB8YbaI7ZSvKM.jpg" 
+             alt="Luxury Gifts Header Image" 
+             style="width: 100%; height: 600px; object-fit: cover; object-position: center 15%; display: block;">
+        
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; text-align: center; background: rgba(0, 0, 0, 0.35); padding: 0 20px;">
+            <p style="text-transform: uppercase; letter-spacing: 4px; font-weight: 700; color: #f4eade; margin-bottom: 15px; font-size: 12px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+                FASHION &bull; BEAUTY &bull; LIFESTYLE
+            </p>
+            
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1.2; color: #ffffff; margin-top: 0; margin-bottom: 25px; font-weight: normal; letter-spacing: 0.5px; text-shadow: 1px 1px 5px rgba(0,0,0,0.4);">
+                All Things, All You. <br>
+                <span style="color: #e5c3a6; font-style: italic;">All in One Place.</span>
+            </h1>
+            
+            <p style="font-size: 14px; color: #f5f5f5; line-height: 1.8; margin-bottom: 40px; font-weight: 400; letter-spacing: 0.3px; max-width: 650px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">
+                From refined staple beauty essentials to fashion curation must-haves&mdash;everything you love, beautifully integrated into one signature destination.
+            </p>
+            
+            <a href="#new-arrivals" class="primary-cta-btn">
+                SHOP NOW
+            </a> 
+        </div>
+    </div>
+
+    <!-- SECTION 1: EXPLORE OUR COLLECTIONS -->
+    <section id="collections" class="collections-section">
+        <div class="section-title-container">
+            <span class="section-subtitle-label">Curated Ensembles</span>
+            <h3 class="section-title">Explore Our Collections</h3>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="w3-row-padding w3-container" style="max-width: 1300px; margin: 0 auto;">
+            <!-- Card 1 -->
+            <div class="w3-col l3 m6 s12 w3-margin-bottom">
+                <div class="collection-card">
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/7d/e8/04/7de804f7604d2e86cb0c81f447743b06.jpg" alt="Summer linen compilation" style="height:320px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 19px; margin: 0 0 16px 0; color: #1a1a1a;">Summer Linen</h4>
+                        <a href="#new-arrivals" class="collection-black-btn">Shop Collection</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="w3-col l3 m6 s12 w3-margin-bottom">
+                <div class="collection-card">
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/cf/6b/a3/cf6ba302c38f55e6fa15bc95f7dbef1e.jpg" alt="Autumn knit compilation" style="height:320px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 19px; margin: 0 0 16px 0; color: #1a1a1a;">Autumn Knit</h4>
+                        <a href="#new-arrivals" class="collection-black-btn">Shop Collection</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="w3-col l3 m6 s12 w3-margin-bottom">
+                <div class="collection-card">
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/90/d6/71/90d67132a60601ce82d702d8324da9e5.jpg" alt="Evening silk wear model" style="height:320px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 19px; margin: 0 0 16px 0; color: #1a1a1a;">Evening Silk</h4>
+                        <a href="#new-arrivals" class="collection-black-btn">Shop Collection</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="w3-col l3 m6 s12 w3-margin-bottom">
+                <div class="collection-card">
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/be/96/d9/be96d93017506dbc32b79e97f632aa7b.jpg" alt="Casual cotton fabrics" style="height:320px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 19px; margin: 0 0 16px 0; color: #1a1a1a;">Casual Cotton</h4>
+                        <a href="#new-arrivals" class="collection-black-btn">Shop Collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: NEW ARRIVALS -->
+    <section id="new-arrivals" class="products-section">
+        <div class="section-title-container">
+            <span class="section-subtitle-label">Just Dropped</span>
+            <h3 class="section-title">New Arrivals</h3>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="w3-row-padding w3-container" style="max-width: 1200px; margin: 0 auto;">
+            <!-- Product 1 -->
+            <div class="w3-col l4 m6 s12 w3-margin-bottom">
+                <div class="product-card">
+                    <span class="card-badge">New</span>
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/e2/dd/b3/e2ddb39d89d1f4896c80c8830e4a9071.jpg" alt="Linen wrap dress view" style="height:380px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-size: 16px; margin: 0 0 6px 0; font-weight: 500; color: #1a1a1a; letter-spacing: 0.5px;">Linen Wrap Dress</h4>
+                        <p style="margin: 0; color: #777; font-size: 12px; font-weight: 300;">100% Sustainable Linen</p>
+                        <h5 style="font-weight: 500; color: #b08d74; margin: 14px 0 20px 0; font-size: 16px;">&#8377;3,499</h5>
+                        <button class="w3-button w3-round-small w3-small" style="background-color: #2b211a; color: white; padding: 12px 28px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 4px;">
+                            Add to Bag
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="w3-col l4 m6 s12 w3-margin-bottom">
+                <div class="product-card">
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/06/1f/98/061f98be8b73c2bcecf2dd2f24e8ee62.jpg" alt="Tailored linen Blazer layout" style="height:380px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-size: 16px; margin: 0 0 6px 0; font-weight: 500; color: #1a1a1a; letter-spacing: 0.5px;">Tailored Linen Blazer</h4>
+                        <p style="margin: 0; color: #777; font-size: 12px; font-weight: 300;">Structured Heavy Weave</p>
+                        <h5 style="font-weight: 500; color: #b08d74; margin: 14px 0 20px 0; font-size: 16px;">&#8377;5,999</h5>
+                        <button class="w3-button w3-round-small w3-small" style="background-color: #2b211a; color: white; padding: 12px 28px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 4px;">
+                            Add to Bag
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="w3-col l4 m6 s12 w3-margin-bottom">
+                <div class="product-card">
+                    <div class="img-overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/9c/91/be/9c91be1eee71c3676543deb7b1feefd4.jpg" alt="Silk button-down blouse apparel" style="height:380px;">
+                    </div>
+                    <div class="w3-container w3-padding-24 w3-center">
+                        <h4 style="font-size: 16px; margin: 0 0 6px 0; font-weight: 500; color: #1a1a1a; letter-spacing: 0.5px;">Silk Button-Down Blouse</h4>
+                        <p style="margin: 0; color: #777; font-size: 12px; font-weight: 300;">100% Premium Mulberry Silk</p>
+                        <h5 style="font-weight: 500; color: #b08d74; margin: 14px 0 20px 0; font-size: 16px;">&#8377;2,999</h5>
+                        <button class="w3-button w3-round-small w3-small" style="background-color: #2b211a; color: white; padding: 12px 28px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 4px;">
+                            Add to Bag
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONAL SALE BANNER SECTION (Matching height: 260px) -->
+    <section class="sale-banner">
+        <span class="sale-subtitle">END OF SEASON CELEBRATION</span>
+        <h1 class="sale-title">Up to 40% Off</h1>
+        <a href="#new-arrivals" class="shop-now-btn">SHOP THE SALE</a>
+    </section>
+
+    <!-- SUSTAINABILITY SPOTLIGHT SECTION (OUR STORY) -->
+    <section id="our-story" class="editorial-split-section">
+        <div class="w3-row" style="width: 100%; max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center;">
+            
+            <!-- Left Side: Text Content -->
+            <div class="w3-col l6 m12 text-container">
+                <h3>Sustainable By Choice</h3>
+                <h2>Fashion with Purpose,<br><span style="color:#b08d74; font-style: italic;">Better for You &amp; Earth.</span></h2>
+                <p>
+                    We believe firmly in slow design&mdash;garments meticulously crafted using exclusively premium organic fabrics, zero-waste patterns, and thoroughly verified ethical fair-trade practices.
+                </p>
+                <a href="../shop.html" class="learn-more-btn">LEARN OUR JOURNEY</a>
+            </div>
+            
+            <!-- Right Side: Image -->
+            <div class="w3-col l6 m12 image-container" style="width: 100%; max-width: 550px;">
+                <img src="https://i.pinimg.com/736x/5b/80/04/5b8004f649f335bfc3694831cd316522.jpg" style="width:100%; height: 450px; object-fit: cover;" alt="Sustainable Fashion showcase">
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION 3: LOOKBOOK INSIGHTS -->
+    <section id="shop-lookbook" class="collections-section" style="border-top: 1px solid #eae5e0;">
+        <div class="section-title-container">
+            <span class="section-subtitle-label">Style Guides</span>
+            <h3 class="section-title">Shop The Lookbook</h3>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="w3-container" style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; padding: 0 20px;">
+
+            <!-- LOOKBOOK CARD 1 -->
+            <div class="lookbook-card">
+                <div style="width: 42%; height: 240px;" class="img-overflow-hidden">
+                    <img src="https://i.pinimg.com/736x/14/9f/bb/149fbba6ba21c9beddd4caba375f6e42.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Effortless Day Out Outfit styling">
+                </div>
+                <div style="width: 58%; background-color: #fcfbfa; padding: 25px 24px; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #1a1a1a; margin: 0 0 12px 0; font-weight: normal;">
+                        Effortless Day Out
+                    </h4>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Linen Shirt</span>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Wide Leg Pants</span>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Leather Sandals</span>
+                    <div>
+                        <a href="#shop-lookbook" class="look-shop-link">Shop Look</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOOKBOOK CARD 2 -->
+            <div class="lookbook-card">
+                <div style="width: 42%; height: 240px;" class="img-overflow-hidden">
+                    <img src="https://i.pinimg.com/736x/94/ef/c5/94efc5b230b521fabe80a59129927f6c.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Classic Minimalist Look setting">
+                </div>
+                <div style="width: 58%; background-color: #ffffff; padding: 25px 24px; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #1a1a1a; margin: 0 0 12px 0; font-weight: normal;">
+                        Classic Minimalist
+                    </h4>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Blazer</span>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Silk Shirt</span>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Trouser</span>
+                    <div>
+                        <a href="#shop-lookbook" class="look-shop-link">Shop Look</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOOKBOOK CARD 3 -->
+            <div class="lookbook-card">
+                <div style="width: 42%; height: 240px;" class="img-overflow-hidden">
+                    <img src="https://i.pinimg.com/236x/d0/c3/aa/d0c3aad1cdd23822087b85ecd150e755.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Evening Elegance dress model">
+                </div>
+                <div style="width: 58%; background-color: #ffffff; padding: 25px 24px; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #1a1a1a; margin: 0 0 12px 0; font-weight: normal;">
+                        Evening Elegance
+                    </h4>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Silk Dress</span>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Heels</span>
+                    <span style="color: #666; font-size: 12px; margin: 3px 0; font-weight: 300;">&bull; Clutch Bag</span>
+                    <div>
+                        <a href="#shop-lookbook" class="look-shop-link">Shop Look</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCOVER PARALLAX BANNER -->
+   <!-- 100% WORKING FIXED DISCOVER SECTION (DARK & SHARP TEXT) -->
+<div style="position: relative; width: 100%; height: 500px; overflow: hidden; margin: 40px 0;">
+    <!-- Background Image (Overlay lagakar thoda dark kiya hai) -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 140%; background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://i.pinimg.com/736x/2f/e7/b6/2fe7b6df5ee99b3dbb449d12ebee71dd.jpg'); background-size: cover; background-position: center; transform: translateY(-15%); z-index: 1;"></div>
+    
+    <!-- Original Text Content (Light/White color for perfect readability) -->
+    <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 4%;">
+        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 4px; color: #e5c3a6; display: block; font-weight: 600; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Elevated Essentials
+        </span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 42px; color: #ffffff; margin: 0 0 20px 0; font-weight: normal; letter-spacing: 1px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);">
+            The Art of Minimal Living
+        </h3>
+        <p style="font-size: 14px; max-width: 550px; margin: 0 auto 35px auto; color: #f5f5f5; line-height: 1.8; font-weight: 400; letter-spacing: 0.5px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+            Objects and apparel designed to bring balance, clarity, and quiet luxury to your everyday routine.
+        </p>
+        <a href="#new-arrivals" class="primary-cta-btn">DISCOVER MORE</a>
+    </div>
+</div>
+
+
+    <!-- FOOTER SECTION -->
+    <footer id="contact-footer" class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo">VELIORA</h2>
+                <p class="footer-desc">Redefining luxury fashion through sustainable practices and timeless, premium aesthetics.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#collections">All Collections</a></li>
+                    <li><a href="#new-arrivals">New Arrivals</a></li>
+                    <li><a href="#shop-lookbook">Lookbooks</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Our Brand</h3>
+                <ul>
+                    <li><a href="#our-story">Our Story</a></li>
+                    <li><a href="#our-story">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#contact-footer">Contact Us</a></li>
+                    <li><a href="#contact-footer">Shipping &amp; Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-col newsletter-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive exclusive drops and early editorial access.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e8e2da; font-size: 12px; color: #8a8a8a;">
+            &copy; 2026 VELIORA Luxury Apparel. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veliora Shop - Premium Linen Dress</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Montserrat',sans-serif;
+            background:#f8f5f2;
+            color:#333;
+        }
+
+        
+        header{
+            background:white;
+            padding:20px 8%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 3px 10px rgba(0,0,0,.08);
+        }
+
+        .logo{
+            font-family:'Playfair Display',serif;
+            font-size:34px;
+            letter-spacing:5px;
+            color:#2b211a;
+            text-shadow:2px 2px 6px rgba(0,0,0,0.15);
+        }
+
+        
+        nav{
+            display:flex;
+            gap:20px;
+        }
+
+        nav a{
+            text-decoration:none;
+            background:#2b211a;
+            color:white;
+            font-size:15px;
+            font-weight:500;
+            padding:10px 20px;
+            border-radius:30px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.15);
+            transition:0.3s ease;
+        }
+
+        nav a:hover{
+            box-shadow:0 6px 15px rgba(0,0,0,0.25);
+            background:#423329;
+        }
+
+        
+        .product-section{
+            width:90%;
+            max-width:1200px;
+            margin:60px auto;
+            display:flex;
+            gap:50px;
+            align-items: flex-start;
+            background:white;
+            padding:40px;
+            border-radius:15px;
+            box-shadow:0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .product-image{
+            flex:1;
+            width: 50%;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            object-fit: contain;
+            background: #fafafa;
+            border-radius: 12px;
+        }
+
+        .product-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 5px 0;
+        }
+
+        .ootd-tag {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b08d74;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .product-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px; 
+            line-height: 1.2;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #2b211a;
+        }
+
+        .price{
+            color:#b08d74;
+            font-size:30px;
+            margin-bottom:20px;
+        }
+
+        .description{
+            color:#666;
+            line-height:1.8;
+            margin-bottom:25px;
+        }
+
+        .size-title, .color-title, .quantity label{
+            font-size:18px;
+            margin-bottom:12px;
+            font-weight:600;
+            color:#2b211a;
+        }
+
+    
+        .size-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .size-options input[type="radio"] {
+            display: none;
+        }
+
+        .size-options label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #e0dcd8;
+            border-radius: 50%;
+            background: white;
+            color: #2b211a;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .size-options label:hover {
+            border-color: #b08d74;
+            transform: scale(1.05);
+        }
+
+        .size-options input[type="radio"]:checked + label {
+            background: #b08d74;
+            color: white;
+            border-color: #b08d74;
+            box-shadow: 0 4px 10px rgba(176, 141, 116, 0.4);
+        }
+
+        
+        .color-group {
+            margin-bottom: 25px;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .color-options input[type="radio"] {
+            display: none;
+        }
+
+        .color-options label {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #d4ceca;
+            cursor: pointer;
+            transition: 0.2s ease;
+            display: inline-block;
+        }
+
+        .color-options label:hover {
+            transform: scale(1.1);
+        }
+
+        .color-options input[type="radio"]:checked + label {
+            border: 2px solid #2b211a;
+            outline: 3px solid #f8f5f2; 
+            outline-offset: -5px;
+        }
+
+        .lbl-beige { background:#d8c3a5; }
+        .lbl-black { background:#222; }
+        .lbl-white { background:#fff; }
+
+        
+        .quantity{
+            margin-bottom:30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quantity input{
+            width:80px;
+            padding:10px;
+            text-align:center;
+            border:2px solid #e0dcd8;
+            border-radius:8px;
+            outline:none;
+            font-size:16px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .quantity input:focus {
+            border-color: #b08d74;
+        }
+
+        
+        .buttons-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn{
+            flex: 1;
+            padding:16px 28px;
+            border:none;
+            cursor:pointer;
+            border-radius:30px;
+            font-size:15px;
+            font-weight: 600;
+            transition:.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .cart{
+            background:#2b211a;
+            color:white;
+        }
+
+        .buy{
+            background:#b08d74;
+            color:white;
+        }
+
+        .btn:hover{
+            transform:translateY(-3px);
+            opacity: 0.9;
+        }
+
+        
+        .product-info-box {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.04);
+            border-left: 5px solid #b08d74;
+        }
+
+        .product-info-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2b211a;
+        }
+
+        .product-info-box ul {
+            line-height: 2.2;
+            color: #555;
+            padding-left: 20px;
+            font-size: 15px;
+        }
+        
+        .product-info-box ul li {
+            margin-bottom: 5px;
+        }
+
+        
+        .reviews-header-simple {
+            text-align: center;
+            margin: 60px 0 40px 0;
+        }
+
+        .reviews-header-simple h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #2b211a;
+            font-weight: 500;
+            letter-spacing: 1px;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .reviews-header-simple h3::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #b08d74;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .reviews-subtitle {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #b08d74; 
+            margin-top: 10px;
+            font-weight: 500; 
+            letter-spacing: 1px;
+        }
+
+        .reviews-grid {
+            display: flex;
+            gap: 25px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px auto;
+        }
+
+        .review-card {
+            flex: 1;
+            background: white;
+            padding: 35px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(43, 33, 26, 0.08);
+        }
+
+        .stars {
+            color: #2b211a; 
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: #b08d74; 
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .reviewer-name {
+            color: #2b211a;
+            font-weight: 600;
+            font-size: 15px;
+            margin-top: auto;
+        }
+
+        /* SUGGESTIONS */
+        .suggestion-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .suggestion-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .suggestion-card {
+            background: white;
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .suggestion-card img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+        }
+
+        .suggestion-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #2b211a;
+        }
+
+        .suggestion-card .prod-price {
+            color: #b08d74;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .suggestion-card button {
+            margin: 20px auto;
+            padding: 12px 25px;
+            background: #2b211a;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s;
+            width: fit-content;
+        }
+
+        .suggestion-card button:hover {
+            background: #b08d74;
+        }
+
+        
+        @media(max-width:768px){
+            header{
+                flex-direction:column;
+                gap:20px;
+            }
+            nav{
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+            .product-section {
+                flex-direction: column;
+                padding: 20px !important;
+                margin: 20px auto;
+            }
+            .product-image {
+                width: 100% !important;
+            }
+            .reviews-grid, .suggestion-grid {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .buttons-group {
+                flex-direction: column;
+            }
+        }
+
+       
+        .story-banner { 
+            background-color: #ffffff; 
+            border-top: 1px solid #e0dcd8; 
+            border-bottom: 1px solid #e0dcd8; 
+            padding: 90px 24px; 
+            text-align: center; 
+            margin-top: 100px;
+            position: relative;
+        }
+
+        .story-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #b08d74;
+        }
+
+        .story-container {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .story-subtitle { 
+            font-size: 12px; 
+            letter-spacing: 4px; 
+            color: #b08d74; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            margin: 0;
+        }
+
+        .story-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 38px; 
+            font-weight: 500; 
+            color: #2b211a; 
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        .story-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 38px; 
+            font-weight: 500; 
+            color: #2b211a; 
+            margin: 0 0 25px 0; 
+            line-height: 1.3;
+            position: relative;
+            padding-bottom: 15px; 
+            display: inline-block;
+        }
+
+        
+        .story-title::after {
+            content: '';
+            display: block;
+            width: 50px; 
+            height: 1.5px; 
+            background: #b08d74; 
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Mobile Optimization */
+        @media(max-width:768px){
+            .story-banner {
+                padding: 60px 20px;
+                margin-top: 60px;
+            }
+            .story-title {
+                font-size: 30px;
+            }
+            .story-text {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">VELIORA</div>
+        <nav>
+            <a href="./HTML/veliora.html">Home</a>
+            <a href="#Shop">Shop</a>
+            <a href="#Collections">Collections</a>
+            <a href="#Contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="product-section" id="Shop">
+        <div class="product-image">
+            <img src="https://i.pinimg.com/736x/50/63/bd/5063bdeafccba58b102326a51956a73e.jpg" alt="Premium Linen Dress">
+        </div>
+
+        <div class="product-details">
+            <span class="ootd-tag"> Outfit of the Day</span>
+            <h1>The Ultimate #OOTD Linen Dress</h1>
+            <div class="price">₹2,499</div>
+            <p class="description">
+                Designed with premium linen fabric for all-day comfort and timeless elegance. Perfect for casual outings, brunch dates, and evening gatherings.
+            </p>
+            
+            <!-- SIZE SELECTOR -->
+            <div class="size-title">Select Size</div>
+            <div class="size-options">
+                <input type="radio" name="size" id="size-s">
+                <label for="size-s">S</label>
+
+                <input type="radio" name="size" id="size-m" checked>
+                <label for="size-m">M</label>
+
+                <input type="radio" name="size" id="size-l">
+                <label for="size-l">L</label>
+
+                <input type="radio" name="size" id="size-xl">
+                <label for="size-xl">XL</label>
+            </div>
+
+            <!-- COLOR SELECTOR -->
+            <div class="color-group">
+                <div class="color-title">Choose Color</div>
+                <div class="color-options">
+                    <input type="radio" name="color" id="col-beige" checked>
+                    <label for="col-beige" class="lbl-beige"></label>
+
+                    <input type="radio" name="color" id="col-black">
+                    <label for="col-black" class="lbl-black"></label>
+
+                    <input type="radio" name="color" id="col-white">
+                    <label for="col-white" class="lbl-white"></label>
+                </div>
+            </div>
+
+            <div class="quantity">
+                <label for="prod-qty">Quantity</label>
+                <input type="number" id="prod-qty" value="1" min="1" max="10">
+            </div>
+
+            <div class="buttons-group">
+                <button class="btn cart">Add To Cart</button>
+                <button class="btn buy">Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT INFORMATION SECTION -->
+    <section class="product-info-box">
+        <h2>Product Details</h2>
+        <ul>
+            <li>Premium Linen Fabric</li>
+            <li>Regular Fit</li>
+            <li>Soft & Breathable Material</li>
+            <li>Suitable for Casual & Party Wear</li>
+            <li>Machine Wash Friendly</li>
+            <li>Free Shipping Across India</li>
+            <li>7 Days Easy Return</li>
+        </ul>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section>
+        <div class="reviews-header-simple">
+            <h3>Customer Reviews</h3>
+            <span class="reviews-subtitle">What our customers say</span>
+        </div>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">Very comfortable fabric and excellent quality. Loved the fitting!</p>
+                <div class="reviewer-name">- Priya Sharma</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">Looks exactly like the picture. Perfect for summer.</p>
+                <div class="reviewer-name">- Ananya Singh</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <p class="review-text">Beautiful dress with premium fabric. Delivery was fast.</p>
+                <div class="reviewer-name">- Riya Patel</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOU MAY ALSO LIKE SECTION -->
+    <section class="suggestion-section" id="Collections">
+        <h2 style="font-family:'Playfair Display',serif; text-align:center; margin-bottom:40px; font-size: 32px; color: #2b211a; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+    You May Also Like
+    <span style="content: ''; display: block; width: 60px; height: 2px; background: #b08d74; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);"></span>
+</h2>
+
+        <div class="suggestion-grid">
+            <div class="suggestion-card">
+                <img src="https://i.pinimg.com/736x/e3/da/ae/e3daaedfd84646e34205463ccb97e086.jpg" alt="Silk Evening Dress">
+                <h3>Silk Evening Dress</h3>
+                <p class="prod-price">₹3,499</p>
+                <button>View Product</button>
+            </div>
+
+            <div class="suggestion-card">
+                <img src="https://i.pinimg.com/736x/63/03/4e/63034ed11e6218ad58f3073ab0f821ad.jpg" alt="Classic Blazer">
+                <h3>Classic short dress</h3>
+                <p class="prod-price">₹2,999</p>
+                <button>View Product</button>
+            </div>
+
+            <div class="suggestion-card">
+                <img src="https://i.pinimg.com/736x/55/29/0f/55290f55799a8077dc7cc62e8fc78236.jpg" alt="Casual Cotton Fabric">
+                <h3>Classic top &baggy jeans</h3>
+                <p class="prod-price">₹2,999</p>
+                <button>View Product</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPGRADED OUR STORY SECTION -->
+    <!-- CENTER-STACKED PHILOSOPHY SECTION -->
+    <section class="story-banner">
+        <div class="story-container">
+            <span class="story-subtitle">Our Philosophy</span>
+            <h2 class="story-title">Conscious Luxury</h2>
+            <p class="story-text">
+                Every piece at Veliora is designed with intention. We partner exclusively with certified ethical fair-trade artisans and utilize organic fabrics to ensure your fashion footprint is as gentle as it is beautiful.
+            </p>
+        </div>
+    </section>
+
+    <footer id="Contact" style="background:#2b211a; color:white; padding:50px 8%; margin-top:60px;">
+
+<div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px;">
+
+<div>
+
+<h2 style="font-family:'Playfair Display',serif; letter-spacing:5px;">
+VELIORA
+</h2>
+
+<p style="margin-top:15px; color:#ddd; line-height:1.8; max-width:300px;">
+Where Style Meets Elegance.
+Premium fashion made for modern women with timeless style.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p><a href="veliora.html" style="color:#ddd; text-decoration:none;">Home</a></p>
+
+<p><a href="#" style="color:#ddd; text-decoration:none;">Shop</a></p>
+
+<p><a href="#" style="color:#ddd; text-decoration:none;">Collections</a></p>
+
+<p><a href="#" style="color:#ddd; text-decoration:none;">Contact</a></p>
+
+</div>
+
+
+
+<div>
+
+<h3>Customer Care</h3>
+
+<p>Free Shipping</p>
+
+<p>Easy Returns</p>
+
+<p>Secure Payment</p>
+
+<p>24×7 Support</p>
+
+</div>
+
+
+
+<div>
+
+<h3>Contact</h3>
+
+<p>📧 support@veliora.com</p>
+
+<p>📞 +91 98765 43210</p>
+
+<p>📍 Jamshedpur, India</p>
+
+</div>
+
+</div>
+
+<hr style="margin:35px 0; border:.5px solid #555;">
+
+<p style="text-align:center; color:#bbb;">
+© 2026 Veliora. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
